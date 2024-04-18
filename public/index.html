@@ -44,6 +44,11 @@
 
     <title>PinLink</title>
     <style>
+      @font-face {
+        font-family: "Tachyon";
+        src: url("/public/assets/fonts/Tachyon/Tachyon.otf") format("opentype");
+        /* font-weight: 600; */
+      }
       html {
         margin: 0;
       }
@@ -61,6 +66,15 @@
         font-family: "Tachyon";
         align-items: center;
       }
+      .dflex {
+        display: flex;
+        align-items: center;
+      }
+      .dflexi {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+      }
 
       .ring {
         display: flex;
@@ -70,15 +84,17 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 200px;
-        height: 200px;
+        width: 300px;
+        height: 300px;
         background: transparent;
         border: 3px solid rgba(255, 255, 255, 0.1);
         border-radius: 50%;
         text-align: center;
         font-family: "Tachyon";
-        font-size: 20px;
-        font-weight: 600;
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 400;
+        /* font-weight: 600; */
         color: white;
         letter-spacing: 4px;
         /* text-transform: uppercase; */
@@ -178,7 +194,10 @@
     -->
     <div class="content_ring">
       <div class="ring">
-        PinLink
+        <div class="dflexi">
+          <img src="./assets/images/icons/logo.png" width="40px" alt="logo" />
+        </div>
+        <div class="dflex">PinLink</div>
         <span class="page_load_spin"></span>
       </div>
     </div>
