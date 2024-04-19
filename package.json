@@ -1,6 +1,6 @@
 {
-  "name": "pinlink",
-  "version": "0.1.0",
+  "name": "pinlink_website",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",

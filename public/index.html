@@ -72,8 +72,12 @@
       }
       .dflexi {
         display: flex;
+        width: 40px;
         align-items: center;
         margin-right: 10px;
+        @media (max-width: 768px) {
+          width: 30px;
+        }
       }
 
       .ring {
@@ -101,6 +105,12 @@
         text-shadow: 0 0 10px #c1ff72;
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
         animation: animateText 1s linear infinite;
+
+        @media (max-width: 768px) {
+          width: 250px;
+          height: 250px;
+          font-size: 22px;
+        }
       }
 
       .ring:before {
@@ -195,7 +205,7 @@
     <div class="content_ring">
       <div class="ring">
         <div class="dflexi">
-          <img src="./assets/images/icons/logo.png" width="40px" alt="logo" />
+          <img src="./assets/images/icons/logo.png" width="100%" alt="logo" />
         </div>
         <div class="dflex">PinLink</div>
         <span class="page_load_spin"></span>
