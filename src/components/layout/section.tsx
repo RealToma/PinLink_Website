@@ -16,7 +16,16 @@ const StyledComponent = styled(Box)`
   background-color: ${({ background }: any) =>
     background ? background : "none"};
   flex-direction: column;
-  padding: 0px 100px 0px 400px;
+  padding: 0px 50px 0px 300px;
   box-sizing: border-box;
-  /* z-index: 3; */
+
+  @media (max-width: 1600px) {
+    padding: 0px 40px 0px 280px;
+  }
+  @media (max-width: 1024px) {
+    padding: 0px 30px;
+  }
+  @media (max-width: 430px) {
+    padding: 0px 20px;
+  }
 `;

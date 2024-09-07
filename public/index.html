@@ -5,44 +5,23 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="PinLink promotes broader participation in the DePIN sector through DePIN real world asset(RWA) tokenization."
-    />
+    <meta name="description" content="PinLinkNetwork" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
 
-    <!-- Google / Search Engine Tags -->
-    <meta itemprop="name" content="PinLink" />
-    <meta
-      itemprop="description"
-      content="PinLink promotes broader participation in the DePIN sector through DePIN real world asset(RWA) tokenization."
-    />
-    <meta itemprop="image" content="%PUBLIC_URL%/Thumbnail.png" />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="PinLink" />
-    <meta
-      property="og:description"
-      content="PinLink promotes broader participation in the DePIN sector through DePIN real world asset(RWA) tokenization."
-    />
-    <meta property="og:image" content="%PUBLIC_URL%/Thumbnail.png" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="PinLink" />
-    <meta
-      property="twitter:description"
-      content="PinLink promotes broader participation in the DePIN sector through DePIN real world asset(RWA) tokenization."
-    />
-    <meta property="twitter:image" content="%PUBLIC_URL%/Thumbnail.png" />
-
-    <title>PinLink</title>
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>PinLinkNetwork</title>
     <style>
       @font-face {
         font-family: "Tachyon";
@@ -75,9 +54,6 @@
         width: 40px;
         align-items: center;
         margin-right: 10px;
-        @media (max-width: 768px) {
-          width: 30px;
-        }
       }
 
       .ring {
@@ -105,12 +81,6 @@
         text-shadow: 0 0 10px #c1ff72;
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
         animation: animateText 1s linear infinite;
-
-        @media (max-width: 768px) {
-          width: 250px;
-          height: 250px;
-          font-size: 22px;
-        }
       }
 
       .ring:before {
@@ -153,7 +123,16 @@
         right: -8px;
         box-shadow: 0 0 12px #c1ff72;
       }
-
+      @media (max-width: 768px) {
+        .dflexi {
+          width: 30px;
+        }
+        .ring {
+          width: 250px;
+          height: 250px;
+          font-size: 22px;
+        }
+      }
       @keyframes animateC {
         0% {
           transform: rotate(0deg);

@@ -1,6 +1,10 @@
 declare module "styled-components";
+declare module "react-loader-spinner";
+declare module "wagmi/providers/public";
+declare module "react-apexcharts";
+declare module "axios";
 declare module "react-router-dom";
-declare module "react-scroll";
+declare module "react-fast-marquee";
 declare module "react-notifications" {
   import { ReactNode } from "react";
   import { EventEmitter } from "events";

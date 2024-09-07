@@ -1,63 +1,23 @@
 import { Box } from "@mui/material";
 import styled from "styled-components";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { LogoMain } from "../icons/logo";
-import { dataContactLink, dataMenuLink } from "../../data/links";
-// import { MdMenu } from "react-icons/md";
 import { HiMenu } from "react-icons/hi";
 import { useState } from "react";
-import { CgClose } from "react-icons/cg";
 import Slide from "@mui/material/Slide";
-import { NotificationManager } from "react-notifications";
+import { CgClose } from "react-icons/cg";
+import { dataContactLink, dataMenuLink } from "../../data/links";
 
 const Header = () => {
+  const { openConnectModal } = useConnectModal();
   const [isMobile, setIsMobile] = useState(false);
-  const handleOpenDapp = () => {
-    NotificationManager.info("Coming soon.", "", 5000);
-  };
 
   return (
     <StyledComponent>
       <LogoMain />
-      <SectionLink count={dataMenuLink.length}>
-        {dataMenuLink.map((each, index) => {
-          return (
-            <a
-              href={each?.linkScroll}
-              style={{ textDecoration: " none" }}
-              key={index}
-            >
-              <TextLink
-                islast={index === dataMenuLink.length - 1 ? 1 : 0}
-                onClick={() => {
-                  // scroller.scrollTo(each.name, {
-                  //   duration: 800,
-                  //   smooth: true,
-                  //   offset: -100, // Adjust offset as needed
-                  // });
-                }}
-              >
-                {each.name}
-              </TextLink>
-            </a>
-          );
-        })}
-      </SectionLink>
-      <SectionButtonGroup>
-        <ButtonDapp
-          onClick={() => {
-            handleOpenDapp();
-          }}
-        >
-          dApp
-        </ButtonDapp>
-        <ButtonStake
-          onClick={() => {
-            handleOpenDapp();
-          }}
-        >
-          Stake
-        </ButtonStake>
-      </SectionButtonGroup>
+      <ButtonConnect onClick={() => openConnectModal?.()}>
+        Connect Wallet
+      </ButtonConnect>
       <ButtonMobile
         onClick={() => {
           setIsMobile(true);
@@ -73,37 +33,17 @@ const Header = () => {
               <SectionGroupMobileLink>
                 {dataMenuLink.map((each, index) => {
                   return (
-                    <a
-                      href={each?.linkScroll}
-                      style={{ textDecoration: " none" }}
+                    <TextMobileLink
                       key={index}
-                      onClick={() => {
-                        setIsMobile(false);
-                      }}
+                      islast={index === dataMenuLink.length - 1 ? 1 : 0}
                     >
-                      <TextMobileLink
-                        islast={index === dataMenuLink.length - 1 ? 1 : 0}
-                      >
-                        {each.name}
-                      </TextMobileLink>
-                    </a>
+                      {each.name}
+                    </TextMobileLink>
                   );
                 })}
                 <SectionMobileButtonGroup>
-                  <ButtonDapp
-                    onClick={() => {
-                      handleOpenDapp();
-                    }}
-                  >
-                    dApp
-                  </ButtonDapp>
-                  <ButtonStake
-                    onClick={() => {
-                      handleOpenDapp();
-                    }}
-                  >
-                    Stake
-                  </ButtonStake>
+                  <ButtonStake>Logout</ButtonStake>
+                  <ButtonDapp>Connect</ButtonDapp>
                 </SectionMobileButtonGroup>
               </SectionGroupMobileLink>
               <SectionMobileFooter>
@@ -150,10 +90,10 @@ const StyledComponent = styled(Box)`
   box-sizing: border-box;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 50px;
+  box-sizing: border-box;
   z-index: 7;
-  background-color: #000;
 
+  padding: 30px 50px;
   @media (max-width: 1600px) {
     padding: 30px 40px;
   }
@@ -165,114 +105,14 @@ const StyledComponent = styled(Box)`
   }
 `;
 
-const SectionLink = styled(Box)`
+const ButtonConnect = styled(Box)`
   display: flex;
-  width: fit-content;
-  height: 60px;
-  padding: 0px 35px;
-  box-sizing: border-box;
-  align-items: center;
-  background-color: #131313;
-  border-radius: 50px;
-  border: 1px solid #3c3f43;
-
-  @media (max-width: 1600px) {
-    height: 50px;
-    padding: 0px 30px;
-    border-radius: 40px;
-  }
-  @media (max-width: 1023px) {
-    display: none;
-  }
-`;
-
-const TextLink = styled(Box)`
-  color: #fff;
-  text-align: center;
-  font-family: Garet;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 850;
-  margin-right: ${({ islast }: any) => (islast ? "none" : "35px")};
-
-  transition: 0.3s;
-  cursor: pointer;
-  user-select: none;
-  &:hover {
-    color: #c1ff72;
-  }
-
-  @media (max-width: 1600px) {
-    font-size: 16px;
-    margin-right: ${({ islast }: any) => (islast ? "none" : "30px")};
-  }
-  @media (max-width: 1366px) {
-    font-size: 12px;
-    margin-right: ${({ islast }: any) => (islast ? "none" : "25px")};
-  }
-  @media (max-width: 1200px) {
-    font-size: 12px;
-    font-weight: 300;
-    margin-right: ${({ islast }: any) => (islast ? "none" : "15px")};
-  }
-`;
-
-const SectionButtonGroup = styled(Box)`
-  display: flex;
-  align-items: center;
-
-  @media (max-width: 1023px) {
-    display: none;
-  }
-`;
-
-const SectionMobileButtonGroup = styled(Box)`
-  display: flex;
-  align-items: center;
-`;
-
-const ButtonDapp = styled(Box)`
-  display: flex;
-  width: 130px;
-  height: 40px;
+  width: 200px;
+  height: 50px;
+  border-radius: 8px;
+  border: 2px solid #c1ff72;
   justify-content: center;
   align-items: center;
-  background-color: #c1ff72;
-  border: 1px solid #c1ff72;
-  border-radius: 8px;
-  color: #000;
-  text-align: center;
-  font-family: Garet;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 850;
-  margin-right: 15px;
-
-  transition: 0.3s;
-  cursor: pointer;
-  user-select: none;
-  &:hover {
-    border: 1px solid white;
-    background-color: white;
-    color: #c1ff72;
-  }
-
-  @media (max-width: 1600px) {
-    width: 100px;
-    height: 40px;
-    font-size: 16px;
-  }
-`;
-
-const ButtonStake = styled(Box)`
-  display: flex;
-  display: flex;
-  width: 130px;
-  height: 40px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  border: 1px solid #fff;
   color: #fff;
   text-align: center;
   font-family: Garet;
@@ -280,18 +120,17 @@ const ButtonStake = styled(Box)`
   font-style: normal;
   font-weight: 850;
 
-  transition: 0.3s;
-  cursor: pointer;
   user-select: none;
+  cursor: pointer;
+
+  transition: 0.3s;
   &:hover {
-    background-color: white;
-    color: black;
+    background-color: #c1ff72;
+    color: #121212;
   }
 
-  @media (max-width: 1600px) {
-    width: 100px;
-    height: 40px;
-    font-size: 16px;
+  @media (max-width: 1023px) {
+    display: none;
   }
 `;
 
@@ -467,6 +306,75 @@ const TextMobileReserved = styled(Box)`
   @media (max-width: 430px) {
     font-size: 11px;
     font-weight: 300;
+  }
+`;
+
+const SectionMobileButtonGroup = styled(Box)`
+  display: flex;
+  align-items: center;
+`;
+
+const ButtonDapp = styled(Box)`
+  display: flex;
+  width: 130px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  background-color: #c1ff72;
+  border: 1px solid #c1ff72;
+  border-radius: 8px;
+  color: #000;
+  text-align: center;
+  font-family: Garet;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 850;
+
+  transition: 0.3s;
+  cursor: pointer;
+  user-select: none;
+  &:hover {
+    border: 1px solid white;
+    background-color: white;
+    color: #c1ff72;
+  }
+
+  @media (max-width: 1600px) {
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+  }
+`;
+
+const ButtonStake = styled(Box)`
+  display: flex;
+  display: flex;
+  width: 130px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid #fff;
+  color: #fff;
+  text-align: center;
+  font-family: Garet;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 850;
+  margin-right: 15px;
+
+  transition: 0.3s;
+  cursor: pointer;
+  user-select: none;
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+
+  @media (max-width: 1600px) {
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
   }
 `;
 
